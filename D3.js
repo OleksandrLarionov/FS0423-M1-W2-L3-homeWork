@@ -135,10 +135,10 @@ console.log('Questi sono tutti i personaggi femminili di nome: ' ,femaleCharacte
   Ad ognuna di queste proprietà assegna come valore un array vuoto.
 */
 const eyeColor = {
-  'blue': [],
-  'yellow': [],
-  'brown': [],
-  'red': [],
+  blue: [],  // senza apici
+  yellow: [],
+  brown: [],
+  red: [],
   'blue-gray': [],
 }
 
@@ -155,23 +155,23 @@ for (let i=0; i < starWarsCharacters.length; i++) {
 
 switch (starWarsCharacters[i].eye_color){
   case  "blue":
-    eyeColor.blue.push(starWarsCharacters[0],[5],[6]);
+    eyeColor.blue.push(starWarsCharacters[i]); // manca la i
     break
 
     case  "yellow":
-      eyeColor.yellow.push(starWarsCharacters[1]);
+      eyeColor.yellow.push(starWarsCharacters[i]);
       break
 
       case  "brown":
-        eyeColor.brown.push(starWarsCharacters[2]);
+        eyeColor.brown.push(starWarsCharacters[i]);
         break
 
         case  "red":
-          eyeColor.red.push(starWarsCharacters[2]);
+          eyeColor.red.push(starWarsCharacters[i]);
           break
 
           case  "blue-gray":
-          eyeColor["blue-gray"].push(starWarsCharacters[2]);
+          eyeColor["blue-gray"].push(starWarsCharacters[i]);
           
 
 
@@ -179,6 +179,10 @@ switch (starWarsCharacters[i].eye_color){
 }
 console.log(eyeColor)
 
+// correzione 
+// case 'blue'
+// eyeColor.blue.push(starWarsCharacters[i]);
+// break;
 
 /* ESERCIZIO 6
   Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una variabile chiamata "crewMass".
@@ -234,7 +238,7 @@ if (crewMass > 1000) {
 for (let i=0; i < starWarsCharacters.length; i++) {
   if (starWarsCharacters[i].gender === 'n/a') {
     // starWarsCharacters[i].push(robot)
-    
+    starWarsCharacters[i].gender = 'robot'   // andava assegnato il valore con =
 
     console.log(starWarsCharacters[i])
     
@@ -245,7 +249,50 @@ for (let i=0; i < starWarsCharacters.length; i++) {
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "characters" prima e dopo l'operazione.
 */
+for (let i=0; i < femaleCharacters.length; i++) {
+  for (let j=0; j < characters[i].length; j++){
+
+    if(femaleCharacters[i].name === characters[j]) {
+      characters.splice(j, 1)
+    }
+  }
+}
+
+
+
+
+
+
+
 
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
+
+
+const validIndex = Math.floor(Math.random() * 10)
+console.log(validIndex)
+
+const randomCharacter = starWarsCharacters[validIndex]
+
+console.log(randomCharacter)
+
+// let storiella = randomCharacter.name + 'il suo  peso è ' + randomCharacter.mass + ' '
+
+console.log(`Mi chiamo ${randomCharacter.name} ${(randomCharacter.gender === 'robot')? "mio creatore non ha lasciato traccia" : `sono nato/a nell'anno ${randomCharacter.birth_year}`}sono alto ${randomCharacter.height} piedi Jedi(yoda) e peso ${randomCharacter.mass} (volte un baby yoda) `)
+
+
+
+
+
+
+
+
+// name: "Obi-Wan Kenobi",
+// height: 182,
+// mass: 77,
+// hair_color: "auburn, white",
+// skin_color: "fair",
+// eye_color: "blue-gray",
+// birth_year: "57BBY",
+// gender: "male"
